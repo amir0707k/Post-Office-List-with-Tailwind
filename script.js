@@ -14,11 +14,11 @@ async function getIP() {
     ipAddress = result.ip
     const getStartedButton = document.getElementById("getStarted");
     getStartedButton.addEventListener("click", () => {
-      console.log(ipAddress)
+      document.cookie = `ip=${ipAddress}; path=/locationDetails/main-page.html`;
+      window.location.href = "/locationDetails/main-page.html";
     });
     console.log(ipAddress);
   } catch (error) {
     console.log(error);
   }
 }
-
