@@ -1,17 +1,24 @@
-let ipAddress;
 getIP()
+const currentIp = document.getElementById('ipAddress');
 
-async function getIP(){
-    const endPoint = "https://api.ipify.org?format=json";
-    try {
-        const response = await fetch(endPoint);
-        const result =await response.json();
-        console.log(result.ip);
-    } catch (error) {
-        console.log(error)
-    }
+async function populateIPintoVar(){
+  ipAddress
 }
 
-// fetch("https://api.ipify.org?format=json")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data.ip));
+async function getIP() {
+  const endPoint = "https://api.ipify.org?format=json";
+  try {
+    const response = await fetch(endPoint);
+    const result = await response.json();
+    currentIp.innerText = result.ip;
+    ipAddress = result.ip
+    const getStartedButton = document.getElementById("getStarted");
+    getStartedButton.addEventListener("click", () => {
+      console.log(ipAddress)
+    });
+    console.log(ipAddress);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
