@@ -44,6 +44,7 @@ async function getInformation(){
         try {
           const response = await fetch(endPoint);
           const result = await response.json();
+          console.log(result);
           renderUserLatLong()
           renderUserInfo(result)
           renderMap();
@@ -69,10 +70,10 @@ async function renderUserInfo(result){
         <p class="text-gray-400 font-bold text-xl">Region: ${result.region}</p>
     `;
     document.getElementById("org-hostname").innerHTML = `
-        <p class="text-gray-400 font-bold text-xl">Organisation: ${result.company.name}</p>
-          <p class="text-gray-400 font-bold text-xl">Hostname: ${result.asn.domain}</p>
+        <p class="text-gray-400 font-bold text-xl">Organisation: ${result.org}</p>
+          
     `;
-
+//<p class="text-gray-400 font-bold text-xl">Hostname: ${result.asn.domain}</p>;
       const pincode = result.postal;
       const postOfficesMessage = await getPostOffices(pincode);
         console.log(postOfficesMessage);
